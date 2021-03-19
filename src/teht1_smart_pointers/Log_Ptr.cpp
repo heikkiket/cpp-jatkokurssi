@@ -29,6 +29,18 @@ public:
     logfile.close();
   };
 
+  T* operator->()
+  {
+    logfile << timestamp() << "operator->" << _p << "\n\n";
+    return _p;
+  }
+
+  T& operator*()
+  {
+    logfile << timestamp() << "operator*" << _p << "\n\n";
+    return *_p;
+  }
+
   //! Copy assignment operator
   Log_Ptr& operator=(const Log_Ptr &other) {};
 

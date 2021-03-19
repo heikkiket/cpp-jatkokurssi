@@ -16,15 +16,16 @@ include_directories(${GTEST_INCLUDE_DIRS})
 
 ## PROJECT files
 add_executable(smart_ptr teht1_smart_pointers/main.cpp
-  # teht1_smart_pointers/Node.cpp)
+  teht1_smart_pointers/Henkilo.cpp
   )
 
 ## Tests
-add_executable(runTests teht1_smart_pointers/tests.cpp
-  )
+# add_executable(runTests teht1_smart_pointers/tests.cpp
+#   teht1_smart_pointers/Test.cpp
+#   )
 
 
-target_link_libraries(runTests gtest gtest_main)
-target_link_libraries(runTests ${GTEST_LIBRARIES} pthread)
+# target_link_libraries(runTests gtest gtest_main)
+# target_link_libraries(runTests ${GTEST_LIBRARIES} pthread)
 
-add_test(iteratorStackTests iteratorStackTests)
+# add_test(iteratorStackTests iteratorStackTests)

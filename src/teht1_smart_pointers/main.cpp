@@ -1,12 +1,17 @@
 #include <iostream>
 #include "Log_Ptr.cpp"
+#include "Henkilo.cpp"
 
 int main(int argc, char *argv[])
 {
-  Log_Ptr<int> p{new int{5}};
+  Log_Ptr<Henkilo> h{new Henkilo{"Matti"}};
 
-  Log_Ptr<int> j { p };
+  Log_Ptr<Henkilo> j { h };
 
+  h->tervehdi();
+  (*h).tervehdi();
+
+  // j->tervehdi();
 
   return 0;
 }

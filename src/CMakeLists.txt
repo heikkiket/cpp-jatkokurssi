@@ -17,6 +17,7 @@ include_directories(${GTEST_INCLUDE_DIRS})
 ## PROJECT files
 add_executable(smart_ptr teht1_smart_pointers/main.cpp
   teht1_smart_pointers/Henkilo.cpp
+  teht1_smart_pointers/Manageri.cpp
   )
 
 ## Tests

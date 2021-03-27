@@ -83,7 +83,13 @@ int main() {
   calculateStregths();
   auto stop = std::chrono::system_clock::now();
   std::chrono::duration<double> duration = stop-start;
-  cout << "Aikaa kului " << duration.count() << " sekuntia.\n";
+  cout << "Aikaa kului " << duration.count() << " sekuntia";
+  if(duration.count() > 60)
+    cout << " eli " <<
+      std::chrono::duration_cast<std::chrono::minutes>(duration).count()
+         << " minuuttia";
+
+  cout << ".\n";
 
   showWindow();
   return 0;

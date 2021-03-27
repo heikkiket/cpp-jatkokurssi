@@ -1,8 +1,8 @@
 #ifndef VARS_H
 #define VARS_H
 
-constexpr auto COLS = 100;
-constexpr auto ROWS = 100;
+constexpr auto COLS = 300;
+constexpr auto ROWS = 300;
 bool done = false;
 constexpr auto MIN_STRENGTH = -4;
 constexpr auto MAX_STRENGTH = 4;

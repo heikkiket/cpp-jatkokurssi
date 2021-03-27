@@ -20,18 +20,30 @@ void setPlayers() {
   // player units
   unit_map[36 - 1][90 - 1] = -2;
   unit_map[36 - 1][80 - 1] = -3;
-  unit_map[54 - 1][36 - 1] = -4;
+  unit_map[53 - 1][36 - 1] = -4;
   unit_map[54 - 1][62 - 1] = -2;
-  unit_map[90 - 1][72 - 1] = -2;
-  unit_map[90 - 1][8 - 1] = -1;
+  unit_map[97 - 1][72 - 1] = -2;
+  unit_map[96 - 1][8 - 1] = -1;
   unit_map[8 - 1][26 - 1] = -1;
+  unit_map[37 - 1][190 - 1] = -2;
+  unit_map[32 - 1][180 - 1] = -3;
+  unit_map[58 - 1][136 - 1] = -4;
+  unit_map[58 - 1][162 - 1] = -2;
+  unit_map[90 - 1][172 - 1] = -2;
+  unit_map[90 - 1][118 - 1] = -1;
+  unit_map[8 - 1][126 - 1] = -1;
 
   // AI units
-  unit_map[72 - 1][88 - 1] = 2;
-  unit_map[26 - 1][34 - 1] = 2;
-  unit_map[62 - 1][70 - 1] = 2;
-  unit_map[16 - 1][98 - 1] = 2;
-  unit_map[52 - 1][54 - 1] = 2;
+  unit_map[172 - 1][88 - 1] = 2;
+  unit_map[126 - 1][34 - 1] = 2;
+  unit_map[262 - 1][70 - 1] = 2;
+  unit_map[216 - 1][98 - 1] = 2;
+  unit_map[152 - 1][54 - 1] = 2;
+  unit_map[172 - 1][188 - 1] = 2;
+  unit_map[126 - 1][134 - 1] = 2;
+  unit_map[262 - 1][170 - 1] = 2;
+  unit_map[216 - 1][198 - 1] = 2;
+  unit_map[152 - 1][154 - 1] = 2;
 }
 
 void initMap()

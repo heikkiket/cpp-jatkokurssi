@@ -1,6 +1,6 @@
-
 #include <cmath>
 #include <iostream>
+#include <chrono>
 
 #include "draw.cpp"
 #include "vars.cpp"
@@ -33,7 +33,6 @@ void setPlayers() {
   unit_map[16 - 1][98 - 1] = 2;
   unit_map[52 - 1][54 - 1] = 2;
 }
-
 
 void initMap()
 {
@@ -76,26 +75,15 @@ void calculateStregths()
   }
 }
 
-
-
-
-
-
-
-int test()
-{
-
-  calculate_strength_component(53, 161, 53, 157);
-
-  cout << "Strength here: " << influence_map[53][61] << '\n';
-  return 0;
-}
-
 int main() {
   initMap();
 
   // test();
+  auto start = std::chrono::system_clock::now();
   calculateStregths();
+  auto stop = std::chrono::system_clock::now();
+  std::chrono::duration<double> duration = stop-start;
+  cout << "Aikaa kului " << duration.count() << " sekuntia.\n";
 
   showWindow();
   return 0;

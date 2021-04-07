@@ -1,0 +1,12 @@
+Yksisäikeinen:
+Aikaa kului 123.756 sekuntia eli 2 minuuttia.
+
+Yksisäikeinen, std::for_each:
+Aikaa kului 110.217 sekuntia eli 1 minuuttia.
+
+Säikeistetty, std::for_each, 3 prosessoria
+Aikaa kului 52.9005 sekuntia.
+
+Säikeistetty, std::async, 3 prosessoria
+Aikaa kului 52.6396 sekuntia.
+

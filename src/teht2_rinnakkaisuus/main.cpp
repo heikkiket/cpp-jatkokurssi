@@ -2,7 +2,7 @@
 #include <iostream>
 #include <chrono>
 #include <vector>
-#include <execution>
+#include <future>
 
 #include "draw.cpp"
 #include "vars.cpp"
@@ -83,7 +83,7 @@ inline double strengthInSq(int unitStrength, double distance)
   return unitStrength / (1 + distance);
 }
 
-inline void calculate_strength_component(int &c0)
+void calculate_strength_component(int c0)
 {
   for (int r0{0}; r0 < ROWS; r0++) {
     for (int c1{0}; c1 < COLS; c1++) {
@@ -100,12 +100,13 @@ inline void calculate_strength_component(int &c0)
 
 void calculateStregths()
 {
-  vector<int> helper(COLS, 0);
+  vector<future<void>> helper(COLS);
   for (int c0{0}; c0 < COLS; c0++) {
-    helper[c0] = c0;
+    helper[c0] = async(calculate_strength_component, c0);
   }
-  for_each(std::execution::par_unseq, helper.begin(), helper.end(),
-           calculate_strength_component);
+  for(auto &h : helper) {
+    h.get();
+  }
 }
 
 int main()

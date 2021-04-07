@@ -1,6 +1,8 @@
 #include <cmath>
 #include <iostream>
 #include <chrono>
+#include <vector>
+#include <execution>
 
 #include "draw.cpp"
 #include "vars.cpp"
@@ -56,6 +58,7 @@ void initMap()
   for(int c0{0}; c0 < COLS; c0++) {
     for (int r0{0}; r0 < ROWS; r0++) {
         unit_map[c0][r0] = {0};
+        influence_map[c0][r0] = {0};
       }
   }
 
@@ -80,29 +83,29 @@ inline double strengthInSq(int unitStrength, double distance)
   return unitStrength / (1 + distance);
 }
 
-inline void calculate_strength_component(int c0, int r0, int c1, int r1)
+inline void calculate_strength_component(int &c0)
 {
-  int unitStrength = unit_map[c1][r1];
-  double dist = distance(c0, r0, c1, r1);
-  influence_map[c0][r0] += strengthInSq(unitStrength, dist);
+  for (int r0{0}; r0 < ROWS; r0++) {
+    for (int c1{0}; c1 < COLS; c1++) {
+      for (int r1{0}; r1 < ROWS; r1++) {
+        int unitStrength = unit_map[c1][r1];
+        double dist = distance(c0, r0, c1, r1);
+        influence_map[c0][r0] += strengthInSq(unitStrength, dist);
+      }
+
+    }
+  }
+
 }
 
 void calculateStregths()
 {
-
-    for (int c0{0}; c0 < COLS; c0++) {
-      for (int r0{0}; r0 < ROWS; r0++) {
-
-        influence_map[c0][r0] = {0};
-
-        for (int c1{0}; c1 < COLS; c1++) {
-          for (int r1{0}; r1 < ROWS; r1++) {
-            calculate_strength_component(c0, r0, c1, r1);
-          }
-      }
-
-      }
+  vector<int> helper(COLS, 0);
+  for (int c0{0}; c0 < COLS; c0++) {
+    helper[c0] = c0;
   }
+  for_each(std::execution::par_unseq, helper.begin(), helper.end(),
+           calculate_strength_component);
 }
 
 int main()

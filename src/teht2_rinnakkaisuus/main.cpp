@@ -62,6 +62,19 @@ void initMap()
   setPlayers();
 }
 
+void printInfluenceMapRow(int column) {
+  for (int r0{0}; r0 < ROWS; r0++) {
+    cout << influence_map[column][r0];
+  }
+  cout << '\n';
+}
+
+void printInfluenceMap() {
+  for (int c0{0}; c0 < COLS; c0++) {
+    printInfluenceMapRow(c0);
+  }
+}
+
 inline double strengthInSq(int unitStrength, double distance)
 {
   return unitStrength / (1 + distance);
@@ -108,6 +121,8 @@ int main() {
          << " minuuttia";
 
   cout << ".\n";
+
+  // printInfluenceMap();
 
   showWindow();
   return 0;

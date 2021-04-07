@@ -88,17 +88,18 @@ void calculateStregths()
 }
 
 int main() {
+{
   initMap();
 
-  // test();
   auto start = std::chrono::system_clock::now();
   calculateStregths();
   auto stop = std::chrono::system_clock::now();
-  std::chrono::duration<double> duration = stop-start;
+  std::chrono::duration<double> duration = stop - start;
   cout << "Aikaa kului " << duration.count() << " sekuntia";
-  if(duration.count() > 60)
-    cout << " eli " <<
-      std::chrono::duration_cast<std::chrono::minutes>(duration).count()
+  if (duration.count() > 60)
+    cout << " eli "
+         << std::chrono::duration_cast<std::chrono::minutes>(duration)
+      .count()
          << " minuuttia";
 
   cout << ".\n";

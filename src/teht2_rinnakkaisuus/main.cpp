@@ -17,7 +17,12 @@ inline double distance(int c0, int r0, int c1, int r1)
 }
 
 void setPlayers() {
-  // player units
+
+  // Small test
+  // unit_map[10 - 1][20 - 1] = -2;
+  // unit_map[20 - 1][30 - 1] = 2;
+
+  // // player units
   unit_map[36 - 1][90 - 1] = -2;
   unit_map[36 - 1][80 - 1] = -3;
   unit_map[53 - 1][36 - 1] = -4;

@@ -105,7 +105,7 @@ void calculateStregths()
   }
 }
 
-int main() {
+int main()
 {
   initMap();
 

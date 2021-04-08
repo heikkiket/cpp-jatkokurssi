@@ -98,6 +98,7 @@ void calculate_strength_component(int c0)
     count_lock.lock();
     ready_count++;
     count_lock.unlock();
+    while(drawing) this_thread::sleep_for(chrono::milliseconds(20));
   }
 
 }
@@ -129,6 +130,7 @@ int main()
   initMap();
 
   thread countPrinterThread (countPrinter);
+  std::thread drawthread(showWindow);
   auto start = std::chrono::system_clock::now();
   calculateStregths();
   auto stop = std::chrono::system_clock::now();
@@ -144,7 +146,6 @@ int main()
 
   // printInfluenceMap();
 
-  std::thread drawthread(showWindow);
   drawthread.join();
   countPrinterThread.join();
   return 0;

@@ -4,7 +4,12 @@
 
 #include <cmath>
 
+#include <thread>
+
 constexpr auto sqr_size = 4;
+
+std::mutex draw_mutex;
+bool drawing = false;
 
 sf::RenderWindow window(sf::VideoMode(COLS*sqr_size, ROWS*sqr_size), "Heikin hieno strategiapeli");
 
@@ -79,11 +84,16 @@ void showWindow() {
 
     }
 
+    draw_mutex.lock();
+    drawing = true;
     window.clear();
 
     drawMap();
     drawUnits();
 
     window.display();
+    drawing = false;
+    draw_mutex.unlock();
+    std::this_thread::sleep_for(std::chrono::seconds(1));
   }
 }

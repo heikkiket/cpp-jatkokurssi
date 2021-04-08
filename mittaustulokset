@@ -10,3 +10,9 @@ Aikaa kului 52.9005 sekuntia.
 Säikeistetty, std::async, 3 prosessoria
 Aikaa kului 52.6396 sekuntia.
 
+Säikeistetty, std::thread, 3 prosessoria
+Aikaa kului 54.1238 sekuntia.
+
+Säikeistetty, std::thread, mutex-laskuri, 3 prosessoria
+Aikaa kului 55.2898 sekuntia.
+

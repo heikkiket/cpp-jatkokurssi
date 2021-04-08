@@ -24,7 +24,7 @@ void setPlayers() {
   // unit_map[10 - 1][20 - 1] = -2;
   // unit_map[20 - 1][30 - 1] = 2;
 
-  // // player units
+  // player units
   unit_map[36 - 1][90 - 1] = -2;
   unit_map[36 - 1][80 - 1] = -3;
   unit_map[53 - 1][36 - 1] = -4;
@@ -51,6 +51,7 @@ void setPlayers() {
   unit_map[262 - 1][170 - 1] = 2;
   unit_map[216 - 1][198 - 1] = 2;
   unit_map[152 - 1][154 - 1] = 2;
+
 }
 
 void initMap()
@@ -94,18 +95,32 @@ void calculate_strength_component(int c0)
       }
 
     }
+    count_lock.lock();
+    ready_count++;
+    count_lock.unlock();
   }
 
 }
 
+
+
 void calculateStregths()
 {
-  vector<future<void>> helper(COLS);
+  vector<thread> helper(COLS);
   for (int c0{0}; c0 < COLS; c0++) {
-    helper[c0] = async(calculate_strength_component, c0);
+    helper[c0] = std::thread(calculate_strength_component, c0);
   }
   for(auto &h : helper) {
-    h.get();
+    h.join();
+  }
+}
+
+void countPrinter() {
+  for (;;) {
+    cout << "Ready count: " << ready_count << "\n";
+    if(ready_count == COLS * ROWS)
+      return;
+    std::this_thread::sleep_for(chrono::seconds(10));
   }
 }
 
@@ -113,6 +128,7 @@ int main()
 {
   initMap();
 
+  thread countPrinterThread (countPrinter);
   auto start = std::chrono::system_clock::now();
   calculateStregths();
   auto stop = std::chrono::system_clock::now();
@@ -128,6 +144,8 @@ int main()
 
   // printInfluenceMap();
 
-  showWindow();
+  std::thread drawthread(showWindow);
+  drawthread.join();
+  countPrinterThread.join();
   return 0;
 }

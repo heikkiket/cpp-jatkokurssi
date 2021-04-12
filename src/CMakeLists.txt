@@ -24,6 +24,8 @@ add_executable(smart_ptr teht1_smart_pointers/main.cpp
 find_package(SFML 2.5 COMPONENTS graphics audio REQUIRED)
 add_executable(rinnakkaisuus teht2_rinnakkaisuus/main.cpp)
 target_link_libraries(rinnakkaisuus sfml-graphics sfml-audio tbb)
+
+add_executable(roolipeli teht3_sillisalaattia/roolipeli.cpp)
 ## Tests
 # add_executable(runTests teht1_smart_pointers/tests.cpp
 #   teht1_smart_pointers/Test.cpp

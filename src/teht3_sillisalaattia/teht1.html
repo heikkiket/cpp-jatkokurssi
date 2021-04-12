@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>teht1.html</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+
+</head>
+
+<body>
+
+<h1>Tehtävä 1 vastaukset</h1>
+
+<p>C++11 oli merkittävä uusi C++ standardi. Selvitä (pintapuolisesti) seuraavien uusien ominaisuuksien merkitys:</p>
+
+<ol>
+<li><p>nullptr-avainsana</p>
+
+<ul>
+<li>Avainsanaa tulee käyttää kun osoitin alustetaan nollaksi. Vanhastaan C:ssä pointteri alustettiin nollaksi asettamalla siihen nolla. Kuitenkin nolla on myös laillinen arvo kokonaislukutyyppiselle muuttujalle . Tämän epäselvyyden poistamiseksi C++11 -standardiin on lisätty nullptr -avainsana. Nullptr ei ole itsessään tyyppi, vaan avainsana, joka muunnetaan jokaiseksi pointer-tyypiksi aina tarpeen mukaan.</li>
+</ul></li>
+<li><p>auto-avainsana</p>
+
+<ul>
+<li>auto-avainsanalla voidaan korvata muuttujan tyyppimäärittely tilanteissa, joissa kääntäjä jo muutenkin tietää tai pystyy päättelemään tyypin. Kätevä etenkin pitkissä tyyppirimpsuissa, esimerkiksi STL-säiliöitä käyttäessä.</li>
+</ul></li>
+<li><p>for-silmukan uusi syntaksi alkioiden läpikäymiseksi</p>
+
+<ul>
+<li><p>Uusi syntaksi toimii näin:</p>
+
+<p>for(auto item : list) {</p></li>
+</ul>
+
+<p>Syntaksi mahdollistaa säiliön läpikäymisen ilman, että säiliön kokoa ja indeksointia tarvitsee miettiä. Tätä varten säiliön on toteutettava iteraattori-rajapinta.</p></li>
+<li><p>final- ja override –avainsanat (perintä, virtuaalifunktiot)</p>
+
+<ul>
+<li>Override-avainsanalla voidaan osoittaa, että ollaan kirjoittamassa lapsiluokkaan metodia, jonka on tarkoitus ylikirjoittaa vanhempi-luokan virtuaalinen metodi. Näin kääntäjä tietää varoittaa mahdollisista virheistä, ja ikävät perintään liittyvät bugit voidaan välttää.</li>
+<li>Final-avainsanalla taas voidaan estää metodin ylikirjoittaminen lapsiluokissa.</li>
+</ul></li>
+<li><p>=delete</p>
+
+<ul>
+<li><p>delete-avainsanan avulla voidaan poistaa luokan konstruktori käytöstä, seuraavalla tavalla</p>
+
+<p>myClass(myClass cls) = delete</p></li>
+</ul></li>
+<li><p>long long int</p>
+
+<ul>
+<li>long long int on vähintään 64-bittinen etumerkillinen kokonaisluku. C++-standardi määrittää minimin muuttujan koolle.</li>
+</ul></li>
+<li><p>hash-taulut: std::unordered_map (standardikirjasto)</p>
+
+<ul>
+<li>standardikirjastoon on lisätty hajautustaulu. Hajautustaulu on tietorakenne, johon elementit tallennetaan avaimesta jollakin keinoin lasketun tarkistussumman avulla. Hajautustaulussa lisäykset, haut ja poistot ovat aikavaativuudeltaan vakio-operaatioita.</li>
+</ul></li>
+<li><p>säännölliset lausekkeet (std::regex)</p>
+
+<ul>
+<li>Olen hieman järkyttynyt, ettei C++:n varhaisemmissa versioissa ollut säännöllisiä lausekkeita. Toisaalta aika monia C-kirjastoja kai edelleen käytetään. std::regex on siis kirjasto, jonka avulla voi luoda säännöllisiä lausekkeita, olioina. Kirjasto kääntää säännölliset lausekkeet olioiksi, ja tarjoaa myös oliot osumille sekä koko osumajoukolle.</li>
+</ul></li>
+</ol>
+
+</body>
+</html>
